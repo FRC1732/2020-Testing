@@ -12,11 +12,12 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.DriveWithJoysticks;
 
 /**
  * Add your docs here.
  */
-public class drivetrain extends Subsystem {
+public class Drivetrain extends Subsystem {
   private CANSparkMax left1 = new CANSparkMax(RobotMap.DRIVETRAIN_LEFT1, MotorType.kBrushless);
   private CANSparkMax left2 = new CANSparkMax(RobotMap.DRIVETRAIN_LEFT2, MotorType.kBrushless);
   private CANSparkMax left3 = new CANSparkMax(RobotMap.DRIVETRAIN_LEFT3, MotorType.kBrushless);
@@ -47,6 +48,8 @@ public class drivetrain extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new DriveWithJoysticks());
+    
   }
 }
 
