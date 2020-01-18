@@ -37,6 +37,7 @@ public class SetMotor_R50 extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.m_DriveMotor.stop();
   }
 
   // Called when another command which requires one or more of the same

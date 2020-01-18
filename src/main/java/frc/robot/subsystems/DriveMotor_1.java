@@ -20,22 +20,22 @@ import frc.robot.util.MotorUtil;
 public class DriveMotor_1 extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private final TalonSRX Motor_1 = MotorUtil.createTalon(RobotMap.TALON_CAN_1, false);
+  private final TalonSRX Motor_1 = MotorUtil.createTalon(RobotMap.TALON_CAN_9, false);
 
   public void forward_100() {
-    Motor_1.set(ControlMode.PercentOutput, 100);
+    Motor_1.set(ControlMode.PercentOutput, 1);
   }
 
   public void forward_75() {
-    Motor_1.set(ControlMode.PercentOutput, 75);
+    Motor_1.set(ControlMode.PercentOutput, 0.75);
   }
 
   public void forward_50() {
-    Motor_1.set(ControlMode.PercentOutput, 50);
+    Motor_1.set(ControlMode.PercentOutput, 0.5);
   }
 
   public void forward_25() {
-    Motor_1.set(ControlMode.PercentOutput, 25);
+    Motor_1.set(ControlMode.PercentOutput, 0.25);
   }
 
   public void stop()
@@ -44,19 +44,19 @@ public class DriveMotor_1 extends Subsystem {
   }
 
   public void reverse_25() {
-    Motor_1.set(ControlMode.PercentOutput, -25);
+    Motor_1.set(ControlMode.PercentOutput, -0.25);
   }
   
   public void reverse_50() {
-    Motor_1.set(ControlMode.PercentOutput, -50);
+    Motor_1.set(ControlMode.PercentOutput, -0.50);
   }
   
   public void reverse_75() {
-    Motor_1.set(ControlMode.PercentOutput, -75);
+    Motor_1.set(ControlMode.PercentOutput, -0.75);
   }
     
   public void reverse_100() {
-    Motor_1.set(ControlMode.PercentOutput, -100);
+    Motor_1.set(ControlMode.PercentOutput, -1);
   }
 
   @Override

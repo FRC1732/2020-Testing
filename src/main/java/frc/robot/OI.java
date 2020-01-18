@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
+/* CopyJS_2 (c) 2019 FIRST. All JS_2s Reserved.                             */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
@@ -8,43 +8,49 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-  private Joystick left = new Joystick(RobotMap.OI_LEFT_ID);
+  Joystick JS_1 = new Joystick(RobotMap.JOYSTICK_0);
+  Joystick JS_2 = new Joystick(RobotMap.JOYSTICK_1);
 
-  public double getLeftJoystick() {
-    return Math.pow(left.getY() * -1,3);
+  public OI() {
+    new JoystickButton(JS_1, RobotMap.BTN_SPEED_1).whenPressed(new SetMotor_0());
+
+    new JoystickButton(JS_1, RobotMap.BTN_SPEED_2).whenPressed(new SetMotor_F25());
+    new JoystickButton(JS_1, RobotMap.BTN_SPEED_4).whenPressed(new SetMotor_F50());
+    new JoystickButton(JS_1, RobotMap.BTN_SPEED_3).whenPressed(new SetMotor_F75());
+    new JoystickButton(JS_1, RobotMap.BTN_SPEED_5).whenPressed(new SetMotor_F100());
+
+    new JoystickButton(JS_1, RobotMap.BTN_SPEED_6).whenPressed(new SetMotor_R25());
+    new JoystickButton(JS_1, RobotMap.BTN_SPEED_7).whenPressed(new SetMotor_R50());
+    new JoystickButton(JS_1, RobotMap.BTN_SPEED_10).whenPressed(new SetMotor_R75());
+    new JoystickButton(JS_1, RobotMap.BTN_SPEED_11).whenPressed(new SetMotor_R100());
+    
+  
   }
-  //// CREATING BUTTONS
-  // One type of button is a joystick button which is any button on a
-  //// joystick.
-  // You create one by telling it which joystick it's on and which button
-  // number it is.
-  // Joystick stick = new Joystick(port);
-  // Button button = new JoystickButton(stick, buttonNumber);
 
-  // There are a few additional built in buttons you can use. Additionally,
-  // by subclassing Button you can create custom triggers and bind those to
-  // commands the same as any other Button.
+  /**
+   * Gets the JS_1 joystick's position, as a percent of fully pushed
+   * 
+   * @return the position, in the range of [-1, 1]
+   */
+  public double getJS_1Joystick() {
+    return -1 * JS_1.getY() * JS_1.getY() * Math.signum(JS_1.getY());
+  }
+  
+  /**
+   * Gets the JS_2 joystick's position, as a percent of fully pushed
+   * 
+   * @return the position, in the range of [-1, 1]
+   */
+  public double getJS_2Joystick() {
+    return -1 * JS_2.getY() * JS_2.getY() * Math.signum(JS_2.getY());
+  }
 
-  //// TRIGGERING COMMANDS WITH BUTTONS
-  // Once you have a button, it's trivial to bind it to a button in one of
-  // three ways:
-
-  // Start the command when the button is pressed and let it run the command
-  // until it is finished as determined by it's isFinished method.
-  // button.whenPressed(new ExampleCommand());
-
-  // Run the command while the button is being held down and interrupt it once
-  // the button is released.
-  // button.whileHeld(new ExampleCommand());
-
-  // Start the command when the button is released and let it run the command
-  // until it is finished as determined by it's isFinished method.
-  // button.whenReleased(new ExampleCommand());
 }
