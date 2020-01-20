@@ -5,6 +5,9 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 /**
  * A class to configure Motor controllers with a defualt configuration
@@ -30,6 +33,23 @@ public class MotorUtil {
     TalonSRX motor = new TalonSRX(id);
     motor.setInverted(reversed);
     motor.setNeutralMode(NeutralMode.Brake);
+    return motor;
+  }
+
+    /**
+   * Creates a CANSparkMax object with the specified parameters, along with other
+   * default settings
+   * 
+   * @param id
+   *                   the CAN id of the talon
+   * @param reversed
+   *                   whether the motor should be reversed
+   * @return the TalonSRX object constructed
+   */
+  public static CANSparkMax createSparkMax_NEO_Brushless(int id, boolean reversed) {
+    CANSparkMax motor = new CANSparkMax(id, MotorType.kBrushless);
+    motor.setInverted(reversed);
+    motor.setIdleMode(IdleMode.kBrake);
     return motor;
   }
   

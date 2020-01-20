@@ -7,8 +7,7 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.revrobotics.CANSparkMax;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
@@ -20,43 +19,46 @@ import frc.robot.util.MotorUtil;
 public class DriveMotor_1 extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private final TalonSRX Motor_1 = MotorUtil.createTalon(RobotMap.TALON_CAN_9, false);
+  private final CANSparkMax Motor_1 = MotorUtil.createSparkMax_NEO_Brushless(RobotMap.TALON_CAN_1, false);
+
+  public void set(double left, double right) {
+    Motor_1.set(left);
+  }
 
   public void forward_100() {
-    Motor_1.set(ControlMode.PercentOutput, 1);
+    Motor_1.set(1);
   }
 
   public void forward_75() {
-    Motor_1.set(ControlMode.PercentOutput, 0.75);
+    Motor_1.set(0.75);
   }
 
   public void forward_50() {
-    Motor_1.set(ControlMode.PercentOutput, 0.5);
+    Motor_1.set(0.5);
   }
 
   public void forward_25() {
-    Motor_1.set(ControlMode.PercentOutput, 0.25);
+    Motor_1.set(0.25);
   }
 
-  public void stop()
-  {
-    Motor_1.set(ControlMode.PercentOutput, 0);
+  public void stop() {
+    Motor_1.set(0);
   }
 
   public void reverse_25() {
-    Motor_1.set(ControlMode.PercentOutput, -0.25);
+    Motor_1.set(-0.25);
   }
-  
+
   public void reverse_50() {
-    Motor_1.set(ControlMode.PercentOutput, -0.50);
+    Motor_1.set(-0.50);
   }
-  
+
   public void reverse_75() {
-    Motor_1.set(ControlMode.PercentOutput, -0.75);
+    Motor_1.set(-0.75);
   }
-    
+
   public void reverse_100() {
-    Motor_1.set(ControlMode.PercentOutput, -1);
+    Motor_1.set(-1);
   }
 
   @Override

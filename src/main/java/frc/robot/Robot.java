@@ -23,7 +23,7 @@ import frc.robot.subsystems.DriveMotor_1;
 public class Robot extends TimedRobot {
   public static Robot robot;
   public static DriveMotor_1 m_DriveMotor = new DriveMotor_1();
-  public static OI m_oi;
+  public static OI oi;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -35,7 +35,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     robot = this;
-    m_oi = new OI();
+    oi = new OI();
   }
 
   /**
