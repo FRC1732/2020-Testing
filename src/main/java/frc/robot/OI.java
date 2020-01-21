@@ -8,10 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj2.command.*;
 import frc.robot.commands.*;
 
 /**
@@ -22,28 +19,8 @@ public class OI {
   Joystick JS_1 = new Joystick(RobotMap.JOYSTICK_0);
   Joystick JS_2 = new Joystick(RobotMap.JOYSTICK_1);
 
-  XboxController XB_1 = new XboxController(RobotMap.JOYSTICK_0);
-  DefaultDrive c_Drive;
-
   public OI() {
     
-    new JoystickButton(XB_1, RobotMap.BTN_SPEED_1).whenPressed(new SetMotor_0());
-
-    new JoystickButton(XB_1, RobotMap.BTN_SPEED_2).whenPressed(new SetMotor_F25());
-    new JoystickButton(XB_1, RobotMap.BTN_SPEED_4).whenPressed(new SetMotor_F50());
-    new JoystickButton(XB_1, RobotMap.BTN_SPEED_3).whenPressed(new SetMotor_F75());
-    new JoystickButton(XB_1, RobotMap.BTN_SPEED_5).whenPressed(new SetMotor_F100());
-
-    new JoystickButton(XB_1, RobotMap.BTN_SPEED_6).whenPressed(new SetMotor_R25());
-    new JoystickButton(XB_1, RobotMap.BTN_SPEED_7).whenPressed(new SetMotor_R50());
-    new JoystickButton(XB_1, RobotMap.BTN_SPEED_8).whenPressed(new SetMotor_R75());
-    new JoystickButton(XB_1, RobotMap.BTN_SPEED_9).whenPressed(new SetMotor_R100());
-    
-
-    /*   driverController.getY(GenericHID.Hand.kLeft),
-      driverController.getX(GenericHID.Hand.kRight)),
-      m_robotDrive) */
-  
   }
 
   /**
@@ -52,7 +29,7 @@ public class OI {
    * @return the position, in the range of [-1, 1]
    */
   public double getLeftJoystick() {
-    return -1 * XB_1.getY(Hand.kLeft) * XB_1.getY(Hand.kLeft) * Math.signum(XB_1.getY(Hand.kLeft));
+    return Math.pow(JS_1.getY(), JS_1.getY()) * Math.signum(JS_1.getY());
   }
 
   /**
@@ -61,7 +38,7 @@ public class OI {
    * @return the position, in the range of [-1, 1]
    */
   public double getRightJoystick() {
-    return -1 * XB_1.getY(Hand.kRight) * XB_1.getY(Hand.kRight) * Math.signum(XB_1.getY(Hand.kRight));
+    return Math.pow(JS_2.getY(), JS_2.getY()) * Math.signum(JS_2.getY());
   }
 
 }

@@ -17,6 +17,12 @@ public class RobotMap {
   // For example to map the left and right motors, you could define the
   // following variables to use with your drivetrain subsystem.
   public static int TALON_CAN_1 = 1;
+  public static int TALON_CAN_2 = 2;
+  public static int TALON_CAN_3 = 3;
+  public static int TALON_CAN_4 = 4;
+  public static int TALON_CAN_5 = 5;
+  public static int TALON_CAN_6 = 6;
+  
   public static int TALON_CAN_10 = 10;
   public static int TALON_CAN_14 = 14;
   public static int TALON_CAN_15 = 15;

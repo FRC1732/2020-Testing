@@ -16,7 +16,7 @@ public class DefaultDrive extends Command {
    */
   public DefaultDrive() {
     // Use addRequirements() here to declare subsystem dependencies.
-    requires(Robot.m_DriveMotor);
+    requires(Robot.drivetrain);
   }
 
   // Called when the command is initially scheduled.
@@ -27,7 +27,7 @@ public class DefaultDrive extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.m_DriveMotor.set(Robot.oi.getLeftJoystick(), Robot.oi.getRightJoystick());
+    Robot.drivetrain.set(Robot.oi.getLeftJoystick(), Robot.oi.getRightJoystick());
   }
 
   // Called once the command ends or is interrupted.

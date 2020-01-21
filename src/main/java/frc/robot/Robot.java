@@ -7,11 +7,16 @@
 
 package frc.robot;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import frc.robot.subsystems.DriveMotor_1;
+import frc.robot.subsystems.Drivetrain;;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -22,11 +27,17 @@ import frc.robot.subsystems.DriveMotor_1;
  */
 public class Robot extends TimedRobot {
   public static Robot robot;
-  public static DriveMotor_1 m_DriveMotor = new DriveMotor_1();
+  public static Drivetrain drivetrain = new Drivetrain();
   public static OI oi;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
+
+  private DifferentialDrive m_myRobot;
+  private Joystick m_leftStick;
+  private Joystick m_rightStick;
+  private CANSparkMax m_leftMasterMotor, m_leftMotor1, m_leftMotor2;
+  private CANSparkMax m_rightMasterMotor, m_rightMotor1, m_rightMotor2;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -34,8 +45,51 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    robot = this;
-    oi = new OI();
+    /**
+     * SPARK MAX controllers are intialized over CAN by constructing a CANSparkMax
+     * object
+     * 
+     * The CAN ID, which can be configured using the SPARK MAX Client, is passed as
+     * the first parameter
+     * 
+     * The motor type is passed as the second parameter. Motor type can either be:
+     * com.revrobotics.CANSparkMaxLowLevel.MotorType.kBrushless
+     * com.revrobotics.CANSparkMaxLowLevel.MotorType.kBrushed
+     * 
+     * The example below initializes four brushless motors with CAN IDs 1 and 2.
+     * Change these parameters to match your setup
+     */
+    m_leftMasterMotor = new CANSparkMax(1, MotorType.kBrushless);
+    m_leftMotor1 = new CANSparkMax(2, MotorType.kBrushless);
+    m_leftMotor2 = new CANSparkMax(3, MotorType.kBrushless);
+    
+    m_rightMasterMotor = new CANSparkMax(4, MotorType.kBrushless);
+    m_rightMotor1 = new CANSparkMax(5, MotorType.kBrushless);
+    m_rightMotor2 = new CANSparkMax(6, MotorType.kBrushless);
+
+    /**
+     * The RestoreFactoryDefaults method can be used to reset the configuration
+     * parameters in the SPARK MAX to their factory default state. If no argument is
+     * passed, these parameters will not persist between power cycles
+     */
+    m_leftMasterMotor.restoreFactoryDefaults();
+    m_leftMotor1.restoreFactoryDefaults();
+    m_leftMotor2.restoreFactoryDefaults();
+
+    m_rightMasterMotor.restoreFactoryDefaults();
+    m_rightMotor1.restoreFactoryDefaults();
+    m_rightMotor2.restoreFactoryDefaults();
+
+    m_leftMotor1.follow(m_leftMasterMotor);
+    m_leftMotor2.follow(m_leftMasterMotor);
+
+    m_rightMotor1.follow(m_rightMasterMotor);
+    m_rightMotor2.follow(m_rightMasterMotor);
+
+    m_myRobot = new DifferentialDrive(m_leftMasterMotor, m_rightMasterMotor);
+
+    m_leftStick = new Joystick(0);
+    m_rightStick = new Joystick(1);
   }
 
   /**
@@ -118,7 +172,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    Scheduler.getInstance().run();
+    m_myRobot.tankDrive(m_leftStick.getY(), m_rightStick.getY());
+    // Scheduler.getInstance().run();
   }
 
   /**
