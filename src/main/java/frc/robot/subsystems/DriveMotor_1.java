@@ -9,6 +9,8 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.revrobotics.EncoderType;
+import com.revrobotics.jni.RevJNIWrapper;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
@@ -22,20 +24,8 @@ public class DriveMotor_1 extends Subsystem {
   // here. Call these from Commands.
   private final TalonSRX Motor_1 = MotorUtil.createTalon(RobotMap.TALON_CAN_9, false);
 
-  public void forward_100() {
+  public void forward() {
     Motor_1.set(ControlMode.PercentOutput, 1);
-  }
-
-  public void forward_75() {
-    Motor_1.set(ControlMode.PercentOutput, 0.75);
-  }
-
-  public void forward_50() {
-    Motor_1.set(ControlMode.PercentOutput, 0.5);
-  }
-
-  public void forward_25() {
-    Motor_1.set(ControlMode.PercentOutput, 0.25);
   }
 
   public void stop()
@@ -43,20 +33,16 @@ public class DriveMotor_1 extends Subsystem {
     Motor_1.set(ControlMode.PercentOutput, 0);
   }
 
-  public void reverse_25() {
-    Motor_1.set(ControlMode.PercentOutput, -0.25);
+  public boolean isBelowSpeed(){
+    Motor_1.getSelectedSensorVelocity();
+    return false;
   }
-  
-  public void reverse_50() {
-    Motor_1.set(ControlMode.PercentOutput, -0.50);
-  }
-  
-  public void reverse_75() {
-    Motor_1.set(ControlMode.PercentOutput, -0.75);
-  }
-    
-  public void reverse_100() {
-    Motor_1.set(ControlMode.PercentOutput, -1);
+
+  public void maintainSpeed(){
+    if(isBelowSpeed()){
+      forward();            
+    }
+
   }
 
   @Override

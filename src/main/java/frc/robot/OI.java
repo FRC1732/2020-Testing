@@ -21,9 +21,10 @@ public class OI {
 
   public OI() {
     new JoystickButton(JS_1, RobotMap.BTN_SPEED_1).whenPressed(new SetMotor_0());
+    new JoystickButton(JS_1, RobotMap.BTN_SPEED_2).toggleWhenPressed(new MaintainSpeed());
 
-    new JoystickButton(JS_1, RobotMap.BTN_SPEED_2).whenPressed(new SetMotor_F25());
-    new JoystickButton(JS_1, RobotMap.BTN_SPEED_4).whenPressed(new SetMotor_F50());
+    //new JoystickButton(JS_1, RobotMap.BTN_SPEED_2).whenPressed(new SetMotor_F25());
+    /*new JoystickButton(JS_1, RobotMap.BTN_SPEED_4).whenPressed(new SetMotor_F50());
     new JoystickButton(JS_1, RobotMap.BTN_SPEED_3).whenPressed(new SetMotor_F75());
     new JoystickButton(JS_1, RobotMap.BTN_SPEED_5).whenPressed(new SetMotor_F100());
 
@@ -31,7 +32,7 @@ public class OI {
     new JoystickButton(JS_1, RobotMap.BTN_SPEED_7).whenPressed(new SetMotor_R50());
     new JoystickButton(JS_1, RobotMap.BTN_SPEED_10).whenPressed(new SetMotor_R75());
     new JoystickButton(JS_1, RobotMap.BTN_SPEED_11).whenPressed(new SetMotor_R100());
-    
+    */
   
   }
 
