@@ -22,19 +22,23 @@ import frc.robot.util.MotorUtil;
 public class DriveMotor_1 extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private final TalonSRX Motor_1 = MotorUtil.createTalon(RobotMap.TALON_CAN_9, false);
+  private final TalonSRX shooterMaster = MotorUtil.createTalon(RobotMap.TALON_CAN_9, false);
+  private final TalonSRX shooterFollower = MotorUtil.createTalon(RobotMap.TALON_CAN_11, false);
 
-  public void forward() {
-    Motor_1.set(ControlMode.PercentOutput, 1);
+  public DriveMotor_1(){
+    shooterFollower.follow(shooterMaster);
   }
 
-  public void stop()
-  {
-    Motor_1.set(ControlMode.PercentOutput, 0);
+  public void forward() {
+    shooterMaster.set(ControlMode.PercentOutput, 1);
+  }
+
+  public void stop(){
+    shooterMaster.set(ControlMode.PercentOutput, 0);
   }
 
   public boolean isBelowSpeed(){
-    Motor_1.getSelectedSensorVelocity();
+    shooterMaster.getSelectedSensorVelocity();
     return false;
   }
 
