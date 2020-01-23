@@ -34,7 +34,7 @@ public class RobotContainer {
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   public static DriveTrain m_drive;
   
-  public static Joystick xbox;
+  public static Joystick left, right;
   public Button a;
   public Button b;
   public JoystickButton lmove;
@@ -61,7 +61,8 @@ public class RobotContainer {
   private void configureButtonBindings() {
 
     // a.whenPressed(new Spin());
-    xbox = new Joystick(0);
+    left = new Joystick(0);
+    right = new Joystick(1);
     m_drive.setDefaultCommand(new Drive());
 
   }
@@ -73,9 +74,9 @@ public class RobotContainer {
     // be used to drive
     // the robot. otherwise the it will return 0 and it will not move. 1 is the Y
     // Axis on the xbox controller
-    if (Math.abs(xbox.getRawAxis(1)) >= .2) {
-      SmartDashboard.putNumber("Yaxis", xbox.getRawAxis(1));
-      return (xbox.getRawAxis(1));
+    if (Math.abs(left.getRawAxis(1)) >= .2) {
+      SmartDashboard.putNumber("Yaxis", left.getRawAxis(1));
+      return (left.getRawAxis(1));
     }
     return 0.0;
   }
@@ -87,9 +88,9 @@ public class RobotContainer {
     // be used to drive
     // the robot. otherwise the it will return 0 and it will not move. 0 is the x
     // Axis on the xbox controller
-    if (Math.abs(xbox.getRawAxis(5)) >= .2)
+    if (Math.abs(left.getRawAxis(5)) >= .2)
     {
-        return (xbox.getRawAxis(5));
+        return (left.getRawAxis(5));
     }
     return 0.0;
   }
