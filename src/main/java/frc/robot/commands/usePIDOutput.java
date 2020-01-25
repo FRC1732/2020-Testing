@@ -10,9 +10,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class MaintainSpeed extends Command {
-  public MaintainSpeed() {
-    requires(Robot.m_DriveMotor);
+public class usePIDOutput extends Command {
+  public usePIDOutput() {
+    requires(Robot.m_PIDShooter);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -25,8 +25,8 @@ public class MaintainSpeed extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.m_DriveMotor.maintainSpeed();    
-  }
+      Robot.m_PIDShooter.use
+    }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
