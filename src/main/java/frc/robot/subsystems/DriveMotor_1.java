@@ -28,8 +28,11 @@ public class DriveMotor_1 extends Subsystem {
 
   public DriveMotor_1(){
     Motor_1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
-    Motor_1.configOpenloopRamp(2);
-    Motor_2.configOpenloopRamp(2);
+    Motor_1.config_kP(0, 1);
+    Motor_1.config_kI(0, 0);
+    Motor_1.config_kD(0, 0);
+    Motor_1.config_kF(0, .1248779297);
+
     Motor_2.follow(Motor_1);
 
 
@@ -53,6 +56,11 @@ public class DriveMotor_1 extends Subsystem {
   public void forward_25() {
     Motor_1.set(ControlMode.PercentOutput, 0.25);
     System.out.println(Motor_1.getSelectedSensorVelocity()*600/8192.0+" rpm");
+  }
+
+  public void maintainRPM(){
+    System.out.println(Motor_1.getSelectedSensorVelocity()*600/8192.0+" rpm");
+    Motor_1.set(ControlMode.Velocity,81920);
   }
 
   public void stop()

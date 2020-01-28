@@ -22,7 +22,7 @@ public class OI {
   public OI() {
     new JoystickButton(JS_1, RobotMap.BTN_SPEED_1).whenPressed(new SetMotor_0());
 
-    new JoystickButton(JS_1, RobotMap.BTN_SPEED_2).whenPressed(new SetMotor_F25());
+    new JoystickButton(JS_1, RobotMap.BTN_SPEED_2).whenPressed(new MaintainRPM());
     new JoystickButton(JS_1, RobotMap.BTN_SPEED_4).whenPressed(new SetMotor_F50());
     new JoystickButton(JS_1, RobotMap.BTN_SPEED_3).whenPressed(new SetMotor_F75());
     new JoystickButton(JS_1, RobotMap.BTN_SPEED_5).whenPressed(new SetMotor_F100());
