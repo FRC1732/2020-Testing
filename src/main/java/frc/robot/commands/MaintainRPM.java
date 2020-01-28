@@ -20,12 +20,14 @@ public class MaintainRPM extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.m_DriveMotor.maintainRPM();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.m_DriveMotor.maintainRPM();
+    //System.out.println(Robot.m_DriveMotor.getMotorVelocity());
+    //System.out.println(Motor_1.getSelectedSensorVelocity()*600/8192.0+" rpm1");
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -8,7 +8,9 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.DemandType;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
@@ -27,15 +29,19 @@ public class DriveMotor_1 extends Subsystem {
   private VictorSPX Motor_2 = MotorUtil.createVictor(RobotMap.VICTOR_CAN_28, true);
 
   public DriveMotor_1(){
-    Motor_1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
-    Motor_1.config_kP(0, 1);
+    //Motor_1.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
+    Motor_1.config_kP(0, .12);
     Motor_1.config_kI(0, 0);
     Motor_1.config_kD(0, 0);
-    Motor_1.config_kF(0, .1248779297);
-
+    Motor_1.config_kF(0, .0078);
+    Motor_1.setNeutralMode(NeutralMode.Coast);
+  
+    Motor_2.setNeutralMode(NeutralMode.Coast);
     Motor_2.follow(Motor_1);
+  }
 
-
+  public double getMotorVelocity(){
+    return(Motor_1.getSelectedSensorVelocity());
   }
 
   public void forward_100() {
@@ -58,9 +64,14 @@ public class DriveMotor_1 extends Subsystem {
     System.out.println(Motor_1.getSelectedSensorVelocity()*600/8192.0+" rpm");
   }
 
+  //get sensor velocity returns ticks/100 milliseconds
+  //multiplying by 600 => ticks/minute
+  //8192 is the number of ticks per revolution for the revRobotics through bore encoder
+  //dividing by 8192 => rpm
   public void maintainRPM(){
-    System.out.println(Motor_1.getSelectedSensorVelocity()*600/8192.0+" rpm");
-    Motor_1.set(ControlMode.Velocity,81920);
+    //Motor_1.set(ControlMode.Velocity,81920);
+    Motor_1.set(ControlMode.Velocity, 81920);
+    System.out.println(Motor_1.getSelectedSensorVelocity()*600/8192.0+" rpm1");
   }
 
   public void stop()
