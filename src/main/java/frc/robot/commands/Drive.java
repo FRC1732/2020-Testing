@@ -14,32 +14,24 @@ public class Drive extends CommandBase {
   /**
    * Creates a new Drive.
    */
-  public double xs, ys;
-  
-  public Drive()
-  {
+  public double left, right;
+
+  public Drive() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.m_drive);
-   
 
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() 
-  {
-    
+  public void initialize() {
+
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute()
-  {
-    xs = RobotContainer.getXboxXSpeed();
-    ys = RobotContainer.getXboxYSpeed();
-    RobotContainer.m_drive.regDrive(xs, ys);
-  
-
+  public void execute() {
+    RobotContainer.m_drive.regDrive(RobotContainer.getLeftJoystick(), RobotContainer.getRightJoystick());
   }
 
   // Called once the command ends or is interrupted.

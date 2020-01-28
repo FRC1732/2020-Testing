@@ -15,7 +15,8 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 // import for Motor Nums
 import frc.robot.Constants;
-
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 // import for tank drive
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -23,14 +24,22 @@ public class DriveTrain extends SubsystemBase {
   /**
    * Creates a new DriveTrain.
    */
-  private CANSparkMax sparkLeftMaster, sparkLeftSlave1, sparkLeftSlave2;
-  private CANEncoder encoderLeftMaster, encoderLeftSlave1, encoderLeftSlave2;
+  private CANSparkMax sparkLeftMaster, sparkLeftSlave1, sparkLeftSlave2, sparkRightMaster, sparkRightSlave1,
+      sparkRightSlave2;
+  private CANEncoder encoderLeftMaster, encoderLeftSlave1, encoderLeftSlave2, encoderRightMaster, encoderRightSlave1,
+      encoderRightSlave2;
+  private DifferentialDrive diffDrive;
+  private SpeedControllerGroup leftDrive, rightDrive;
 
   public DriveTrain() {
     // controllers being contructered
-    sparkLeftMaster = new CANSparkMax(Constants.SPARKFL, MotorType.kBrushless);
-    sparkLeftSlave1 = new CANSparkMax(Constants.SPARKBL, MotorType.kBrushless);
-    sparkLeftSlave2 = new CANSparkMax(Constants.SPARKBR, MotorType.kBrushless);
+    sparkLeftMaster = new CANSparkMax(Constants.LEFT_MASTER, MotorType.kBrushless);
+    sparkLeftSlave1 = new CANSparkMax(Constants.LEFT_SLAVE_1, MotorType.kBrushless);
+    sparkLeftSlave2 = new CANSparkMax(Constants.LEFT_SLAVE_2, MotorType.kBrushless);
+
+    sparkRightMaster = new CANSparkMax(Constants.RIGHT_MASTER, MotorType.kBrushless);
+    sparkRightSlave1 = new CANSparkMax(Constants.RIGHT_SLAVE_1, MotorType.kBrushless);
+    sparkRightSlave2 = new CANSparkMax(Constants.RIGHT_SLAVE_2, MotorType.kBrushless);
     /*
      * encoders have to be contructed seperately in order to afford the stuttering
      * problem that occured in the Pre-Season of 2020. See documentation in the log
@@ -38,21 +47,38 @@ public class DriveTrain extends SubsystemBase {
      * 
      * 
      */
-    // leftdrive = new SpeedControllerGroup(sparkFL, sparkBL);
-    // rightdrive = new SpeedControllerGroup(sparkFR, sparkBR);
 
     encoderLeftMaster = sparkLeftMaster.getEncoder();
     encoderLeftSlave1 = sparkLeftSlave1.getEncoder();
     encoderLeftSlave2 = sparkLeftSlave2.getEncoder();
 
+    encoderRightMaster = sparkRightMaster.getEncoder();
+    encoderRightSlave1 = sparkRightSlave1.getEncoder();
+    encoderRightSlave2 = sparkRightSlave2.getEncoder();
+
+    sparkLeftMaster.setInverted(true);
+    sparkLeftSlave1.setInverted(true);
+    sparkLeftSlave2.setInverted(true);
+
     sparkLeftSlave1.follow(sparkLeftMaster);
     sparkLeftSlave2.follow(sparkLeftMaster);
 
+    sparkRightSlave1.follow(sparkRightMaster);
+    sparkRightSlave2.follow(sparkRightMaster);
+
+    // leftDrive = new SpeedControllerGroup(sparkLeftMaster, sparkLeftSlave1,
+    // sparkLeftSlave2);
+    // rightDrive = new SpeedControllerGroup(sparkRightMaster, sparkRightSlave1,
+    // sparkRightSlave2);
+
+    // diffDrive = new DifferentialDrive(leftDrive, rightDrive);
+
   }
 
-  public void regDrive(double speedL, double speedR)
-  { 
+  public void regDrive(double speedL, double speedR) {
     sparkLeftMaster.set(speedL);
+    sparkRightMaster.set(speedR);
+    // diffDrive.tankDrive(speedL, speedR);
   }
 
   public double getWheelPosFL() {

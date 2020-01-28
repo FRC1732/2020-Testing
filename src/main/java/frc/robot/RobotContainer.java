@@ -95,6 +95,24 @@ public class RobotContainer {
     return 0.0;
   }
 
+    /**
+   * Gets the JS_1 joystick's position, as a percent of fully pushed
+   * 
+   * @return the position, in the range of [-1, 1]
+   */
+  public static double getLeftJoystick() {
+    return left.getY() * left.getY() * Math.signum(left.getY());
+  }
+
+  /**
+   * Gets the JS_2 joystick's position, as a percent of fully pushed
+   * 
+   * @return the position, in the range of [-1, 1]
+   */
+  public static double getRightJoystick() {
+    return -1 * right.getY() * right.getY() * Math.signum(right.getY());
+  }
+
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
