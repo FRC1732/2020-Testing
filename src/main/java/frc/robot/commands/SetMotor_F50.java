@@ -25,6 +25,7 @@ public class SetMotor_F50 extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    Robot.m_DriveMotor.printMotorVelocity();
     Robot.m_DriveMotor.forward_50();
   }
 

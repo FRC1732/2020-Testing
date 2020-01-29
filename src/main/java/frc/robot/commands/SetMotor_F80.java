@@ -10,9 +10,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class SetMotor_F75 extends Command {
+public class SetMotor_F80 extends Command {
 
-  public SetMotor_F75() {
+  public SetMotor_F80() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.m_DriveMotor);
   }
@@ -25,7 +25,8 @@ public class SetMotor_F75 extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.m_DriveMotor.forward_75();
+    Robot.m_DriveMotor.printMotorVelocity();
+    Robot.m_DriveMotor.forward_80();
   }
 
   // Make this return true when this Command no longer needs to run execute()
