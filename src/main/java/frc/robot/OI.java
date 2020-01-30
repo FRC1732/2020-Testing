@@ -12,12 +12,15 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.MaintainRPM;
 import frc.robot.commands.SetMotor_0;
 import frc.robot.commands.SetMotor_F100;
+import frc.robot.commands.SetMotor_F25;
 import frc.robot.commands.SetMotor_F50;
 import frc.robot.commands.SetMotor_F80;
 import frc.robot.commands.SetMotor_R100;
 import frc.robot.commands.SetMotor_R25;
 import frc.robot.commands.SetMotor_R50;
 import frc.robot.commands.SetMotor_R75;
+import frc.robot.commands.decreaseMotorSpeed;
+import frc.robot.commands.increaseMotorSpeed;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -30,10 +33,11 @@ public class OI {
   public OI() {
     new JoystickButton(JS_1, RobotMap.BTN_SPEED_1).whenPressed(new SetMotor_0());
 
-    new JoystickButton(JS_1, RobotMap.BTN_SPEED_2).whenPressed(new MaintainRPM());
-    new JoystickButton(JS_1, RobotMap.BTN_SPEED_4).whenPressed(new SetMotor_F50());
-    new JoystickButton(JS_1, RobotMap.BTN_SPEED_3).whenPressed(new SetMotor_F100());
-    new JoystickButton(JS_1, RobotMap.BTN_SPEED_5).whenPressed(new SetMotor_F80());
+    // new JoystickButton(JS_1, RobotMap.BTN_SPEED_2).whenPressed(new MaintainRPM());
+    // new JoystickButton(JS_1, RobotMap.BTN_SPEED_2).whenPressed(new SetMotor_F25());
+    new JoystickButton(JS_1, RobotMap.BTN_SPEED_4).whenPressed(new decreaseMotorSpeed());
+    new JoystickButton(JS_1, RobotMap.BTN_SPEED_3).whenPressed(new SetMotor_F50());
+    new JoystickButton(JS_1, RobotMap.BTN_SPEED_5).whenPressed(new increaseMotorSpeed());
 
     new JoystickButton(JS_1, RobotMap.BTN_SPEED_6).whenPressed(new SetMotor_R25());
     new JoystickButton(JS_1, RobotMap.BTN_SPEED_7).whenPressed(new SetMotor_R50());
