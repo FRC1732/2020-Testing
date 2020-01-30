@@ -55,18 +55,17 @@ public class DriveMotor_1 extends Subsystem {
     return motorSpeed;
   }
 
-  public void resetMotorSpeed() {
-    motorSpeed = 0.0;
-    setCurrentMotorSpeed();
-  }
-
   public void increaseMotorSpeed(){
-    motorSpeed += 0.1;
+    motorSpeed += 0.01;
+    motorSpeed = motorSpeed >= 1.00 ? 1 : motorSpeed;
+    System.out.println("Motor ++ | " + motorSpeed);
     setCurrentMotorSpeed();
   }
 
   public void decreaseMotorSpeed(){
-    motorSpeed -= 0.1;
+    motorSpeed -= 0.01;
+    motorSpeed = motorSpeed <= -1.00 ? -1 : motorSpeed;
+    System.out.println("Motor -- | " + motorSpeed);
     setCurrentMotorSpeed();
   }
 
@@ -74,20 +73,28 @@ public class DriveMotor_1 extends Subsystem {
     Motor_1.set(ControlMode.PercentOutput, motorSpeed);
   }
 
-  public void forward_80() {
-    Motor_1.set(ControlMode.PercentOutput, .8);
+  public void forward_75() {
+    motorSpeed = 0.75;
+    System.out.println("Motor FORWARD SET | " + motorSpeed);
+    setCurrentMotorSpeed();
   }
 
   public void forward_100() {
-    Motor_1.set(ControlMode.PercentOutput, 1);
+    motorSpeed = 1;
+    System.out.println("Motor FORWARD SET | " + motorSpeed);
+    setCurrentMotorSpeed();
   }
 
   public void forward_50() {
-    Motor_1.set(ControlMode.PercentOutput, 0.5);
+    motorSpeed = 0.5;
+    System.out.println("Motor FORWARD SET | " + motorSpeed);
+    setCurrentMotorSpeed();
   }
 
   public void forward_25() {
-    Motor_1.set(ControlMode.PercentOutput, 0.25);
+    motorSpeed = 0.25;
+    System.out.println("Motor FORWARD SET | " + motorSpeed);
+    setCurrentMotorSpeed();
   }
 
   // get sensor velocity returns ticks/100 milliseconds
@@ -100,23 +107,33 @@ public class DriveMotor_1 extends Subsystem {
   }
 
   public void stop() {
-    Motor_1.set(ControlMode.PercentOutput, 0);
+    motorSpeed = 0.0;
+    System.out.println("Motor stopped!");
+    setCurrentMotorSpeed();
   }
 
   public void reverse_25() {
-    Motor_1.set(ControlMode.PercentOutput, -0.25);
+    motorSpeed = -0.25;
+    System.out.println("Motor REVERSE SET | " + motorSpeed);
+    setCurrentMotorSpeed();
   }
 
   public void reverse_50() {
-    Motor_1.set(ControlMode.PercentOutput, -0.50);
+    motorSpeed = -0.50;
+    System.out.println("Motor REVERSE SET | " + motorSpeed);
+    setCurrentMotorSpeed();
   }
 
   public void reverse_75() {
-    Motor_1.set(ControlMode.PercentOutput, -0.75);
+    motorSpeed = -0.75;
+    System.out.println("Motor REVERSE SET | " + motorSpeed);
+    setCurrentMotorSpeed();
   }
 
   public void reverse_100() {
-    Motor_1.set(ControlMode.PercentOutput, -1);
+    motorSpeed = -1.0;
+    System.out.println("Motor REVERSE SET | " + motorSpeed);
+    setCurrentMotorSpeed();
   }
 
   @Override
