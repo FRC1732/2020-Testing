@@ -19,12 +19,47 @@ package frc.robot;
  */
 public final class Constants {
 
-    // current values are standins for the real thing. -1/9/20
+    //PROTOBOT 
     public static int LEFT_MASTER = 1;
     public static int LEFT_SLAVE_1 = 2;
     public static int LEFT_SLAVE_2 = 3;
     public static int RIGHT_MASTER = 4;
     public static int RIGHT_SLAVE_1 = 5;
     public static int RIGHT_SLAVE_2 = 6;
-    // public static int SPINPORT = 0;
+
+    //Climber mapping
+    public static final int CLIMBER_RIGHT_ID = 10;
+    public static final int CLIMBER_LEFT_ID = 35;
+    public static final int CLIMBER_DRIVE_ID = 17;
+    public static final int CLIMBING_SOLENOID_ID = 1;
+    
+    //Drivetrain mapping
+    public static final int DRIVETRAIN_LEFTMASTER_ID = 32;
+    public static final int DRIVETRAIN_LEFT1_ID = 33;
+    public static final int DRIVETRAIN_LEFT2_ID = 34;
+    public static final int DRIVETRAIN_RIGHTMASTER_ID = 11;
+    public static final int DRIVETRAIN_RIGHT1_ID = 12; 
+    public static final int DRIVETRAIN_RIGHT2_ID = 13;
+    
+    //Shooter mapping
+    public static final int SHOOTER_SHOOTER_ID = 9;
+    public static final int SHOOTER_ADJUSTMENT_SOLENOID_ID = 5;
+    public static final int SHOOTER_ROTATION_SOLENOID_ID = 6;
+
+    //Indexer mapping
+    public static final int INDEXER_CELLHOLDER1_ID = 30;
+    public static final int INDEXER_CELLHOLDER2_ID = 28;
+    public static final int INDEXER_CONVEYER_ID = 15;
+    public static final int INDEXER_CELLGATE_ID = 3;
+
+    //Intake mapping
+    public static final int INTAKE_INTAKEMOTOR_ID = 1;
+    public static final int INTAKE_INTAKESOLENOID_ID = 0;
+
+    //ControlPanelManip mapping
+    public static final int CONTROLPANELMANIP_MOTOR_ID = 14;
+    public static final int CONTROLPANELMANIP_TRENCH_HARDSTOP_SOLENOID_ID = 4;
+
+    //Vision mapping
+    public static final int VISION_LIMELIGHT_ID = 31;
 }
