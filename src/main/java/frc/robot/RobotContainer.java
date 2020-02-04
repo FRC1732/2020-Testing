@@ -14,12 +14,12 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.Button;
-import edu.wpi.first.wpilibj.smartdashboard.*;
 
 // importing our code so we can program the buttons to do certain commands
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Intake;
 import frc.robot.commands.*;
 
 /**
@@ -33,6 +33,7 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   public static DriveTrain m_drive;
+  public static Intake m_Intake;
   
   public static Joystick left, right;
   public Button a;
@@ -41,13 +42,13 @@ public class RobotContainer {
   public JoystickButton rmove;
   public JoystickButton mistake;
   public Drive driving;
-  // setDefaultCommand(new Drive());
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
     m_drive = new DriveTrain();
+    m_Intake = new Intake();
 
     configureButtonBindings();
   }
@@ -61,38 +62,10 @@ public class RobotContainer {
   private void configureButtonBindings() {
 
     // a.whenPressed(new Spin());
-    left = new Joystick(0);
-    right = new Joystick(1);
+    left = new Joystick(Constants.JOYSTICK_LEFT);
+    right = new Joystick(Constants.JOYSTICK_RIGHT);
     m_drive.setDefaultCommand(new Drive());
 
-  }
-
-  public static double getXboxYSpeed() {
-    // if the y axis is more pushed more than a certain amount then (to account for
-    // drivers accidentally
-    // pressing on buttons) then the raw axis will be returned. That value will then
-    // be used to drive
-    // the robot. otherwise the it will return 0 and it will not move. 1 is the Y
-    // Axis on the xbox controller
-    if (Math.abs(left.getRawAxis(1)) >= .2) {
-      SmartDashboard.putNumber("Yaxis", left.getRawAxis(1));
-      return (left.getRawAxis(1));
-    }
-    return 0.0;
-  }
-
-  public static double getXboxXSpeed() {
-    // if the x axis is more pushed more than a certain amount then (to account for
-    // drivers accidentally
-    // pressing on buttons) then the raw axis will be returned. That value will then
-    // be used to drive
-    // the robot. otherwise the it will return 0 and it will not move. 0 is the x
-    // Axis on the xbox controller
-    if (Math.abs(left.getRawAxis(5)) >= .2)
-    {
-        return (left.getRawAxis(5));
-    }
-    return 0.0;
   }
 
     /**
