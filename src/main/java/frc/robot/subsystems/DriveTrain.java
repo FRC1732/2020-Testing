@@ -56,9 +56,13 @@ public class DriveTrain extends SubsystemBase {
     encoderRightSlave1 = sparkRightSlave1.getEncoder();
     encoderRightSlave2 = sparkRightSlave2.getEncoder();
 
-    sparkLeftMaster.setInverted(true);
-    sparkLeftSlave1.setInverted(true);
-    sparkLeftSlave2.setInverted(true);
+    sparkLeftMaster.setInverted(false);
+    sparkLeftSlave1.setInverted(false);
+    sparkLeftSlave2.setInverted(false);
+
+    sparkRightMaster.setInverted(true);
+    sparkRightSlave1.setInverted(true);
+    sparkRightSlave2.setInverted(true);
 
     sparkLeftSlave1.follow(sparkLeftMaster);
     sparkLeftSlave2.follow(sparkLeftMaster);
