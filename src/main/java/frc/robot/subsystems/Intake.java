@@ -49,9 +49,6 @@ public class Intake extends SubsystemBase {
   public void extendIntakeFord(){
       extendIntake(true);
   }
-  public void stopIntakeFord(double motor){
-    intakeMotor.set(ControlMode.PercentOutput,motor);
-  }
 
   @Override
   public void periodic() {

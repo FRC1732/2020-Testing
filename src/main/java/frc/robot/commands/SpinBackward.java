@@ -7,16 +7,20 @@
 
 package frc.robot.commands;
 
-import frc.robot.RobotContainer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.RobotContainer;
+import frc.robot.subsystems.Intake;
 
 public class SpinBackward extends CommandBase {
+  private final Intake m_intake;
   /**
    * Creates a new SpinBackward.
    */
-  public SpinBackward() {
+  public SpinBackward(Intake intake) {
+    m_intake = intake;
+  
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.m_Intake);
+    addRequirements(intake);
   }
 
   // Called when the command is initially scheduled.
@@ -27,7 +31,7 @@ public class SpinBackward extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.m_Intake.spinBackward();
+    m_intake.spinBackward();
   }
 
   // Called once the command ends or is interrupted.
