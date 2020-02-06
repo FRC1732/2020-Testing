@@ -60,7 +60,7 @@ public final class Constants {
     public static final int INDEXER_CELLGATE_ID = 3;
 
     // Intake mapping
-    public static final int INTAKE_INTAKEMOTOR_ID = 7;
+    public static final int INTAKE_INTAKEMOTOR_ID = 1;
     public static final int INTAKE_INTAKESOLENOID_ID = 6;
 
     // ControlPanelManip mapping

@@ -18,7 +18,7 @@ public class StopIntake extends CommandBase {
    */
   public StopIntake(Intake intake) {
     m_intake = intake;
-    // Use addRequirements() here to declare subsystem dependencies.
+    //Use addRequirements() here to declare subsystem dependencies.
     addRequirements(intake);
   }
 

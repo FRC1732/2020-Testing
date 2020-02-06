@@ -20,20 +20,20 @@ public class Intake extends SubsystemBase {
    * Creates a new Intake.
    */
   private VictorSPX intakeMotor;
-  //private Solenoid intakeSolenoid;
+  private Solenoid intakeSolenoid;
 
   public Intake() {
     intakeMotor = new VictorSPX(Constants.INTAKE_INTAKEMOTOR_ID);
-    //intakeSolenoid = new Solenoid(Constants.INTAKE_INTAKESOLENOID_ID);
+    intakeSolenoid = new Solenoid(Constants.INTAKE_INTAKESOLENOID_ID);
   }
 
   public void setIntakeMotor (double motor){
     intakeMotor.set(ControlMode.PercentOutput, motor);
   }
 
-  //public void extendIntake(boolean extendIntakeSolenoid){
-    //intakeSolenoid.set(extendIntakeSolenoid);
-  //}
+  public void extendIntake(boolean extendIntakeSolenoid){
+    intakeSolenoid.set(extendIntakeSolenoid);
+  }
   public void spinForward(){
       setIntakeMotor(.75);
   }
@@ -46,9 +46,9 @@ public class Intake extends SubsystemBase {
     setIntakeMotor(0);
   }
 
-  //public void extendIntakeFord(){
-      //extendIntake(true);
-  //}
+  public void extendIntakeFord(){
+      extendIntake(true);
+  }
 
   @Override
   public void periodic() {
