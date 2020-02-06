@@ -23,9 +23,9 @@ public final class Constants {
     public static int JOYSTICK_LEFT = 0;
     public static int JOYSTICK_RIGHT = 1;
 
-    public static int JOYSTICK_STOPINTAKE = 0;
-    public static int JOYSTICK_SPINFORWARD = 1;
-    public static int JOYSTICK_SPINBACKWARD = 2;
+    public static int JOYSTICK_STOPINTAKE = 2;
+    public static int JOYSTICK_SPINFORWARD = 3;
+    public static int JOYSTICK_SPINBACKWARD = 4;
     
     public static int LEFT_MASTER = 1;
     public static int LEFT_SLAVE_1 = 2;
@@ -60,8 +60,8 @@ public final class Constants {
     public static final int INDEXER_CELLGATE_ID = 3;
 
     // Intake mapping
-    public static final int INTAKE_INTAKEMOTOR_ID = 1;
-    public static final int INTAKE_INTAKESOLENOID_ID = 0;
+    public static final int INTAKE_INTAKEMOTOR_ID = 7;
+    public static final int INTAKE_INTAKESOLENOID_ID = 6;
 
     // ControlPanelManip mapping
     public static final int CONTROLPANELMANIP_MOTOR_ID = 14;

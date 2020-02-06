@@ -37,7 +37,7 @@ public class RobotContainer {
   public static Intake m_Intake = new Intake();
   public static SpinForward m_spinForward = new SpinForward(m_Intake);
   public static SpinBackward m_spinBackward = new SpinBackward(m_Intake);
-    public static StopIntake m_stopIntake = new StopIntake(m_Intake);
+  public static StopIntake m_stopIntake = new StopIntake(m_Intake);
 
   public static Joystick left = new Joystick(Constants.JOYSTICK_LEFT);
   public static Joystick right = new Joystick(Constants.JOYSTICK_RIGHT);
