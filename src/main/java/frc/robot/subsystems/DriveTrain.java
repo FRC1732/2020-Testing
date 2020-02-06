@@ -72,6 +72,22 @@ public class DriveTrain extends SubsystemBase {
     sparkLeftSlave2.setIdleMode(IdleMode.kBrake);
     sparkRightSlave1.setIdleMode(IdleMode.kBrake);
     sparkRightSlave2.setIdleMode(IdleMode.kBrake);
+
+    sparkLeftMaster.setOpenLoopRampRate(0);
+    sparkLeftSlave1.setOpenLoopRampRate(0);
+    sparkLeftSlave2.setOpenLoopRampRate(0);
+
+    sparkRightMaster.setOpenLoopRampRate(0);
+    sparkRightSlave1.setOpenLoopRampRate(0);
+    sparkRightSlave2.setOpenLoopRampRate(0);
+
+    sparkLeftMaster.setClosedLoopRampRate(0);
+    sparkLeftSlave1.setClosedLoopRampRate(0);
+    sparkLeftSlave2.setClosedLoopRampRate(0);
+
+    sparkRightMaster.setClosedLoopRampRate(0);
+    sparkRightSlave1.setClosedLoopRampRate(0);
+    sparkRightSlave2.setClosedLoopRampRate(0);
   }
 
   public void regDrive(double speedL, double speedR) {
