@@ -24,15 +24,17 @@ import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Intake;
 
 /**
- * This class is where the bulk of the robot should be declared.  Since Command-based is a
- * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
- * periodic methods (other than the scheduler calls).  Instead, the structure of the robot
- * (including subsystems, commands, and button mappings) should be declared here.
+ * This class is where the bulk of the robot should be declared. Since
+ * Command-based is a "declarative" paradigm, very little robot logic should
+ * actually be handled in the {@link Robot} periodic methods (other than the
+ * scheduler calls). Instead, the structure of the robot (including subsystems,
+ * commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+
   public static DriveTrain m_drive = new DriveTrain();
   public static Intake m_Intake = new Intake();
   public static SpinForward m_spinForward = new SpinForward(m_Intake);
@@ -44,6 +46,7 @@ public class RobotContainer {
   public static JoystickButton spinForward = new JoystickButton(left, Constants.JOYSTICK_SPINFORWARD);
   public static JoystickButton spinBackward = new JoystickButton(left, Constants.JOYSTICK_SPINBACKWARD);
   public static JoystickButton stopIntake = new JoystickButton(left, Constants.JOYSTICK_STOPINTAKE);
+
   public Drive driving;
 
   /**
@@ -68,10 +71,17 @@ public class RobotContainer {
     spinBackward.whenPressed(m_spinBackward);
     stopIntake.whenPressed(m_stopIntake);
     m_drive.setDefaultCommand(new Drive());
+    JoystickButton intake = new JoystickButton(left, 1);
+    JoystickButton outtake = new JoystickButton(right, 1);
+
+    intake.whenReleased(new StopIntake(m_Intake));
+    outtake.whenPressed(new SpinBackward(m_Intake));
+    intake.whenPressed(new SpinForward(m_Intake));
+    outtake.whenReleased(new StopIntake(m_Intake));
 
   }
 
-    /**
+  /**
    * Gets the JS_1 joystick's position, as a percent of fully pushed
    * 
    * @return the position, in the range of [-1, 1]
@@ -89,7 +99,6 @@ public class RobotContainer {
     return right.getY() * right.getY() * Math.signum(right.getY());
   }
 
-
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
@@ -100,8 +109,7 @@ public class RobotContainer {
     return m_autoCommand;
   }
 
-  public Command getDrive()
-  {
+  public Command getDrive() {
     return driving;
   }
 }
