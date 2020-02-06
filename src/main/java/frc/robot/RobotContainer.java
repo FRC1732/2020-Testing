@@ -23,10 +23,11 @@ import frc.robot.subsystems.Intake;
 import frc.robot.commands.*;
 
 /**
- * This class is where the bulk of the robot should be declared.  Since Command-based is a
- * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
- * periodic methods (other than the scheduler calls).  Instead, the structure of the robot
- * (including subsystems, commands, and button mappings) should be declared here.
+ * This class is where the bulk of the robot should be declared. Since
+ * Command-based is a "declarative" paradigm, very little robot logic should
+ * actually be handled in the {@link Robot} periodic methods (other than the
+ * scheduler calls). Instead, the structure of the robot (including subsystems,
+ * commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
@@ -34,7 +35,7 @@ public class RobotContainer {
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   public static DriveTrain m_drive;
   public static Intake m_Intake;
-  
+
   public static Joystick left, right;
   public Button a;
   public Button b;
@@ -65,10 +66,17 @@ public class RobotContainer {
     left = new Joystick(Constants.JOYSTICK_LEFT);
     right = new Joystick(Constants.JOYSTICK_RIGHT);
     m_drive.setDefaultCommand(new Drive());
+    JoystickButton intake = new JoystickButton(left, 1);
+    JoystickButton outtake = new JoystickButton(right, 1);
+
+    intake.whenReleased(new StopIntake());
+    outtake.whenPressed(new SpinBackward());
+    intake.whenPressed(new SpinForward());
+    outtake.whenReleased(new StopIntake());
 
   }
 
-    /**
+  /**
    * Gets the JS_1 joystick's position, as a percent of fully pushed
    * 
    * @return the position, in the range of [-1, 1]
@@ -86,7 +94,6 @@ public class RobotContainer {
     return right.getY() * right.getY() * Math.signum(right.getY());
   }
 
-
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
@@ -97,8 +104,7 @@ public class RobotContainer {
     return m_autoCommand;
   }
 
-  public Command getDrive()
-  {
+  public Command getDrive() {
     return driving;
   }
 }
