@@ -11,6 +11,7 @@ import com.revrobotics.CANEncoder;
 
 // imports for motors 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -64,6 +65,13 @@ public class DriveTrain extends SubsystemBase {
 
     sparkRightSlave1.follow(sparkRightMaster);
     sparkRightSlave2.follow(sparkRightMaster);
+
+    sparkLeftMaster.setIdleMode(IdleMode.kBrake);
+    sparkRightMaster.setIdleMode(IdleMode.kBrake);
+    sparkLeftSlave1.setIdleMode(IdleMode.kBrake);
+    sparkLeftSlave2.setIdleMode(IdleMode.kBrake);
+    sparkRightSlave1.setIdleMode(IdleMode.kBrake);
+    sparkRightSlave2.setIdleMode(IdleMode.kBrake);
   }
 
   public void regDrive(double speedL, double speedR) {
