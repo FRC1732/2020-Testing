@@ -5,22 +5,22 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.Shooter;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.RobotContainer;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Shooter;
 
-public class SpinBackward extends CommandBase {
-  private final Intake m_intake;
+public class SetShooterSpeed extends CommandBase {
+  private Shooter m_shooter;
+  private double m_speed;
   /**
-   * Creates a new SpinBackward.
+   * Creates a new SetShooterSpeed.
    */
-  public SpinBackward(Intake intake) {
-    m_intake = intake;
-  
+  public SetShooterSpeed(Shooter shooter, double speed) {
+    m_shooter = shooter;
+    m_speed = speed;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(intake);
+    addRequirements(shooter);
   }
 
   // Called when the command is initially scheduled.
@@ -31,7 +31,7 @@ public class SpinBackward extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_intake.spinBackward();
+    m_shooter.setMotorSpeed(m_speed);
   }
 
   // Called once the command ends or is interrupted.
@@ -42,6 +42,6 @@ public class SpinBackward extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true;
+    return false;
   }
 }

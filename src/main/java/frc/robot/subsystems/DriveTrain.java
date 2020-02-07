@@ -16,7 +16,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class DriveTrain extends SubsystemBase {
+public class Drivetrain extends SubsystemBase {
   /**
    * Creates a new DriveTrain.
    */
@@ -25,7 +25,7 @@ public class DriveTrain extends SubsystemBase {
   private CANEncoder encoderLeftMaster, encoderLeftSlave1, encoderLeftSlave2, encoderRightMaster, encoderRightSlave1,
       encoderRightSlave2;
 
-  public DriveTrain() {
+  public Drivetrain() {
     initializeMotorControllers();
   }
 

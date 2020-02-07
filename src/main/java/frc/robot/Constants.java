@@ -23,10 +23,18 @@ public final class Constants {
     public static int JOYSTICK_LEFT = 0;
     public static int JOYSTICK_RIGHT = 1;
 
-    public static int JOYSTICK_STOPINTAKE = 2;
-    public static int JOYSTICK_SPINFORWARD = 3;
-    public static int JOYSTICK_SPINBACKWARD = 4;
+    public static int JOYSTICK_SPINFORWARD = 1;
+    public static int JOYSTICK_SPINBACKWARD = 2;
     
+    public static int JOYSTICK_DECR_SHOOTER = 4;
+    public static int JOYSTICK_SET_SHOOTER_50 = 3;
+    public static int JOYSTICK_INCR_SHOOTER = 5;
+
+    public static int JOYSTICK_SET_SHOOTER_0 = 6;
+    public static int JOYSTICK_SET_SHOOTER_25 = 7;
+    public static int JOYSTICK_SET_SHOOTER_75 = 10;
+    public static int JOYSTICK_SET_SHOOTER_100 = 11;
+
     public static int LEFT_MASTER = 1;
     public static int LEFT_SLAVE_1 = 2;
     public static int LEFT_SLAVE_2 = 3;
@@ -50,12 +58,12 @@ public final class Constants {
 
     // Shooter mapping
     public static final int SHOOTER_SHOOTER_ID = 9;
+    public static final int SHOOTER_CAN_ID_TALONSRX = 30;
+    public static final int SHOOTER_CAN_ID_VICTORSPX = 28;
     public static final int SHOOTER_ADJUSTMENT_SOLENOID_ID = 5;
     public static final int SHOOTER_ROTATION_SOLENOID_ID = 6;
 
     // Indexer mapping
-    public static final int INDEXER_CELLHOLDER1_ID = 30;
-    public static final int INDEXER_CELLHOLDER2_ID = 28;
     public static final int INDEXER_CONVEYER_ID = 15;
     public static final int INDEXER_CELLGATE_ID = 3;
 

@@ -5,33 +5,32 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.Intake;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.RobotContainer;
+import frc.robot.subsystems.Intake;
 
-public class Drive extends CommandBase {
+public class SpinBackward extends CommandBase {
+  private final Intake m_intake;
   /**
-   * Creates a new Drive.
+   * Creates a new SpinBackward.
    */
-  public double left, right;
-
-  public Drive() {
+  public SpinBackward(Intake intake) {
+    m_intake = intake;
+  
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.m_drive);
-
+    addRequirements(intake);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.m_drive.regDrive(RobotContainer.getLeftJoystick(), RobotContainer.getRightJoystick());
+    m_intake.spinBackward();
   }
 
   // Called once the command ends or is interrupted.
@@ -42,6 +41,6 @@ public class Drive extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }

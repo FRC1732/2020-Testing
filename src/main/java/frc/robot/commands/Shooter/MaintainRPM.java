@@ -5,43 +5,40 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
-import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
+package frc.robot.commands.Shooter;
 
-public class SetMotor_0 extends Command {
+import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Shooter;
 
-  public SetMotor_0() {
+public class MaintainRPM extends CommandBase {
+  private final Shooter m_shooter;
+
+  public MaintainRPM(Shooter shooter) {
+    m_shooter = shooter;
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.m_DriveMotor);
+    addRequirements(shooter);
   }
 
   // Called just before this Command runs the first time
   @Override
-  protected void initialize() {
+  public void initialize() {
+    m_shooter.maintainRPM();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
-  protected void execute() {
-    Robot.m_DriveMotor.stop();
+  public void execute() {
+    m_shooter.printMotorVelocity();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
-  protected boolean isFinished() {
-    return true;
+  public boolean isFinished() {
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
-  protected void end() {
+  public void end(boolean interrupted) {
   }
-
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
-  @Override
-  protected void interrupted() {
-  }
-
 }

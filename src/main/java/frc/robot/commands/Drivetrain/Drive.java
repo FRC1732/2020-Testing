@@ -5,32 +5,38 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.Drivetrain;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.RobotContainer;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Drivetrain;
 
-public class StopIntake extends CommandBase {
-  private final Intake m_intake;
+public class Drive extends CommandBase {
+private Drivetrain m_drive;
+private Joystick left, right;
+
   /**
-   * Creates a new StopIntake.
+   * Creates a new Drive.
    */
-  public StopIntake(Intake intake) {
-    m_intake = intake;
-    //Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(intake);
+  public Drive(Drivetrain drive, Joystick left, Joystick right) {
+    m_drive = drive;
+    this.left = left;
+    this.right = right;
+    // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(drive);
+
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_intake.stop();
+    m_drive.regDrive(left.getY() * left.getY() * Math.signum(left.getY()), right.getY() * right.getY() * Math.signum(right.getY()));
   }
 
   // Called once the command ends or is interrupted.
