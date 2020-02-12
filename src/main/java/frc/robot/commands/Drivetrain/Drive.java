@@ -12,8 +12,8 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drivetrain;
 
 public class Drive extends CommandBase {
-private Drivetrain m_drive;
-private Joystick left, right;
+  private Drivetrain m_drive;
+  private Joystick left, right;
 
   /**
    * Creates a new Drive.
@@ -36,7 +36,11 @@ private Joystick left, right;
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_drive.regDrive(left.getY() * left.getY() * Math.signum(left.getY()), right.getY() * right.getY() * Math.signum(right.getY()));
+    double leftSpeed = left.getY() * left.getY() * Math.signum(left.getY());
+    double rightSpeed = right.getY() * right.getY() * Math.signum(right.getY());
+    System.out.println("LEFT: " + leftSpeed);
+    System.out.println("RIGHT: " + rightSpeed);
+    m_drive.regDrive(leftSpeed, rightSpeed);
   }
 
   // Called once the command ends or is interrupted.

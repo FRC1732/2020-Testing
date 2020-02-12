@@ -35,7 +35,7 @@ import frc.robot.subsystems.Shooter;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public Drivetrain m_drive;
-  public Intake m_Intake;
+  // public Intake m_Intake;
   public Shooter m_Shooter;
   
   public Joystick left;
@@ -47,7 +47,7 @@ public class RobotContainer {
    */
   public RobotContainer() {
     m_drive = new Drivetrain();
-    m_Intake = new Intake();
+    // m_Intake = new Intake();
     m_Shooter = new Shooter();
     configureButtonBindings();
   }
@@ -65,12 +65,12 @@ public class RobotContainer {
     
 
     // Intake - IN
-    new JoystickButton(left, Constants.JOYSTICK_SPINFORWARD).whenPressed(new SpinForward(m_Intake));
-    new JoystickButton(left, Constants.JOYSTICK_SPINFORWARD).whenReleased(new StopIntake(m_Intake));
+    // new JoystickButton(left, Constants.JOYSTICK_SPINFORWARD).whenPressed(new SpinForward(m_Intake));
+    // new JoystickButton(left, Constants.JOYSTICK_SPINFORWARD).whenReleased(new StopIntake(m_Intake));
 
     // Intake - OUT
-    new JoystickButton(left, Constants.JOYSTICK_SPINBACKWARD).whenPressed(new SpinBackward(m_Intake));
-    new JoystickButton(left, Constants.JOYSTICK_SPINBACKWARD).whenReleased(new StopIntake(m_Intake));
+    // new JoystickButton(left, Constants.JOYSTICK_SPINBACKWARD).whenPressed(new SpinBackward(m_Intake));
+    // new JoystickButton(left, Constants.JOYSTICK_SPINBACKWARD).whenReleased(new StopIntake(m_Intake));
 
     //Shooter
     new JoystickButton(left, Constants.JOYSTICK_SET_SHOOTER_0).whenPressed(new SetShooterSpeed(m_Shooter, 0));
