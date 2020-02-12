@@ -30,7 +30,8 @@ public final class Constants {
     public static int JOYSTICK_SET_SHOOTER_50 = 3;
     public static int JOYSTICK_INCR_SHOOTER = 5;
 
-    public static int JOYSTICK_SET_SHOOTER_0 = 6;
+    public static int JOYSTICK_SET_SHOOTER_0 = 1;
+    // public static int JOYSTICK_SET_SHOOTER_0 = 6;
     public static int JOYSTICK_SET_SHOOTER_25 = 7;
     public static int JOYSTICK_SET_SHOOTER_75 = 10;
     public static int JOYSTICK_SET_SHOOTER_100 = 11;
@@ -49,12 +50,12 @@ public final class Constants {
     public static final int CLIMBING_SOLENOID_ID = 1;
 
     // Drivetrain mapping
-    public static final int DRIVETRAIN_LEFTMASTER_ID = 32;
-    public static final int DRIVETRAIN_LEFT1_ID = 33;
-    public static final int DRIVETRAIN_LEFT2_ID = 34;
-    public static final int DRIVETRAIN_RIGHTMASTER_ID = 11;
-    public static final int DRIVETRAIN_RIGHT1_ID = 12;
-    public static final int DRIVETRAIN_RIGHT2_ID = 13;
+    public static final int DRIVETRAIN_LEFTMASTER_ID = 33;
+    public static final int DRIVETRAIN_LEFT1_ID = 34;
+    public static final int DRIVETRAIN_LEFT2_ID = 35;
+    public static final int DRIVETRAIN_RIGHTMASTER_ID = 10;
+    public static final int DRIVETRAIN_RIGHT1_ID = 11;
+    public static final int DRIVETRAIN_RIGHT2_ID = 12;
 
     // Shooter mapping
     public static final int SHOOTER_SHOOTER_ID = 9;
