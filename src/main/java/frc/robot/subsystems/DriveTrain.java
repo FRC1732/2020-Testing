@@ -30,13 +30,13 @@ public class Drivetrain extends SubsystemBase {
   }
 
   private void initializeMotorControllers() {
-    sparkLeftMaster = new CANSparkMax(Constants.LEFT_MASTER, MotorType.kBrushless);
-    sparkLeftSlave1 = new CANSparkMax(Constants.LEFT_SLAVE_1, MotorType.kBrushless);
-    sparkLeftSlave2 = new CANSparkMax(Constants.LEFT_SLAVE_2, MotorType.kBrushless);
+    sparkLeftMaster = new CANSparkMax(Constants.DRIVETRAIN_LEFTMASTER_ID, MotorType.kBrushless);
+    sparkLeftSlave1 = new CANSparkMax(Constants.DRIVETRAIN_LEFT1_ID, MotorType.kBrushless);
+    sparkLeftSlave2 = new CANSparkMax(Constants.DRIVETRAIN_LEFT2_ID, MotorType.kBrushless);
 
-    sparkRightMaster = new CANSparkMax(Constants.RIGHT_MASTER, MotorType.kBrushless);
-    sparkRightSlave1 = new CANSparkMax(Constants.RIGHT_SLAVE_1, MotorType.kBrushless);
-    sparkRightSlave2 = new CANSparkMax(Constants.RIGHT_SLAVE_2, MotorType.kBrushless);
+    sparkRightMaster = new CANSparkMax(Constants.DRIVETRAIN_RIGHTMASTER_ID, MotorType.kBrushless);
+    sparkRightSlave1 = new CANSparkMax(Constants.DRIVETRAIN_RIGHT1_ID, MotorType.kBrushless);
+    sparkRightSlave2 = new CANSparkMax(Constants.DRIVETRAIN_RIGHT2_ID, MotorType.kBrushless);
 
     /*
      * encoders have to be contructed seperately in order to afford the stuttering
@@ -66,12 +66,12 @@ public class Drivetrain extends SubsystemBase {
     sparkRightSlave1.follow(sparkRightMaster);
     sparkRightSlave2.follow(sparkRightMaster);
 
-    sparkLeftMaster.setIdleMode(IdleMode.kBrake);
-    sparkRightMaster.setIdleMode(IdleMode.kBrake);
-    sparkLeftSlave1.setIdleMode(IdleMode.kBrake);
-    sparkLeftSlave2.setIdleMode(IdleMode.kBrake);
-    sparkRightSlave1.setIdleMode(IdleMode.kBrake);
-    sparkRightSlave2.setIdleMode(IdleMode.kBrake);
+    sparkLeftMaster.setIdleMode(IdleMode.kCoast);
+    sparkRightMaster.setIdleMode(IdleMode.kCoast);
+    sparkLeftSlave1.setIdleMode(IdleMode.kCoast);
+    sparkLeftSlave2.setIdleMode(IdleMode.kCoast);
+    sparkRightSlave1.setIdleMode(IdleMode.kCoast);
+    sparkRightSlave2.setIdleMode(IdleMode.kCoast);
 
     sparkLeftMaster.setOpenLoopRampRate(0);
     sparkLeftSlave1.setOpenLoopRampRate(0);
