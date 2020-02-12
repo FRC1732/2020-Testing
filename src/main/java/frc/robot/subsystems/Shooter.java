@@ -69,21 +69,21 @@ public class Shooter extends PIDSubsystem {
   public void increaseMotorSpeed() {
     motorSpeed += 0.01;
     motorSpeed = motorSpeed >= 1.00 ? 1 : motorSpeed;
-    System.out.println("Motor ++ | " + motorSpeed);
+    System.out.println("Motor ++ | " + motorSpeed * 100);
     setCurrentMotorSpeed();
   }
 
   public void decreaseMotorSpeed() {
     motorSpeed -= 0.01;
     motorSpeed = motorSpeed <= -1.00 ? -1 : motorSpeed;
-    System.out.println("Motor -- | " + motorSpeed);
+    System.out.println("Motor -- | " + motorSpeed * 100);
     setCurrentMotorSpeed();
   }
 
   public void setMotorSpeed(double speed)
   {
     motorSpeed = speed;
-    System.out.println("Motor speed SET | " + motorSpeed);
+    System.out.println("Motor speed SET | " + motorSpeed * 100);
     setCurrentMotorSpeed();
   }
 
