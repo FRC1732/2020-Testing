@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.subsystems.DriveMotor_1;
+import frc.robot.subsystems.HalfPipe;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,6 +25,7 @@ public class Robot extends TimedRobot {
   public static Robot robot;
   public static DriveMotor_1 m_DriveMotor = new DriveMotor_1();
   public static OI m_oi;
+  public static HalfPipe halfPipe = new HalfPipe();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();

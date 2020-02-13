@@ -8,16 +8,11 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.DemandType;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.util.MotorUtil;
 
 /**
  * Add your docs here.
@@ -25,8 +20,8 @@ import frc.robot.util.MotorUtil;
 public class DriveMotor_1 extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private TalonSRX Motor_1 = new TalonSRX(RobotMap.TALON_CAN_30);
-  private VictorSPX Motor_2 = new VictorSPX(RobotMap.VICTOR_CAN_28);
+  private TalonSRX Motor_1 = new TalonSRX(RobotMap.TALON_CAN_3);
+  private TalonSRX Motor_2 = new TalonSRX(RobotMap.TALON_CAN_4);
 
   private double motorSpeed = 0.0;
 

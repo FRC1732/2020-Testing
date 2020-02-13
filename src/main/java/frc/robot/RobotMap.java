@@ -24,8 +24,9 @@ public class RobotMap {
   public static int TALON_CAN_16 = 16;
   */
 
-  public static int TALON_CAN_30 = 30;
-  public static int VICTOR_CAN_28 = 28;
+  public static int TALON_CAN_2 = 1;
+  public static int TALON_CAN_3 = 3;
+  public static int TALON_CAN_4 = 4;
 
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:

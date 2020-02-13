@@ -21,6 +21,7 @@ import frc.robot.commands.SetMotor_R50;
 import frc.robot.commands.SetMotor_R75;
 import frc.robot.commands.decreaseMotorSpeed;
 import frc.robot.commands.increaseMotorSpeed;
+import frc.robot.commands.spinHalfPipe;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -31,10 +32,10 @@ public class OI {
   Joystick JS_2 = new Joystick(RobotMap.JOYSTICK_1);
 
   public OI() {
-    new JoystickButton(JS_1, RobotMap.BTN_SPEED_1).whenPressed(new SetMotor_0());
+    new JoystickButton(JS_1, RobotMap.BTN_SPEED_1).whileHeld(new spinHalfPipe());
 
     // new JoystickButton(JS_1, RobotMap.BTN_SPEED_2).whenPressed(new MaintainRPM());
-    new JoystickButton(JS_1, RobotMap.BTN_SPEED_2).whenPressed(new SetMotor_F25());
+    new JoystickButton(JS_1, RobotMap.BTN_SPEED_2).whenPressed(new SetMotor_0());
     new JoystickButton(JS_1, RobotMap.BTN_SPEED_4).whenPressed(new decreaseMotorSpeed());
     new JoystickButton(JS_1, RobotMap.BTN_SPEED_3).whenPressed(new SetMotor_F50());
     new JoystickButton(JS_1, RobotMap.BTN_SPEED_5).whenPressed(new increaseMotorSpeed());
