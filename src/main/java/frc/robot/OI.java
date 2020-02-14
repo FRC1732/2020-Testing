@@ -7,8 +7,6 @@
 
 package frc.robot;
 
-import java.sql.Struct;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.MaintainRPM;
