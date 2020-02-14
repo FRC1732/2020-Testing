@@ -7,21 +7,22 @@
 
 package frc.robot;
 
+import java.sql.Struct;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.MaintainRPM;
 import frc.robot.commands.SetMotor_0;
 import frc.robot.commands.SetMotor_F100;
-import frc.robot.commands.SetMotor_F25;
 import frc.robot.commands.SetMotor_F50;
 import frc.robot.commands.SetMotor_F75;
 import frc.robot.commands.SetMotor_R100;
-import frc.robot.commands.SetMotor_R25;
 import frc.robot.commands.SetMotor_R50;
 import frc.robot.commands.SetMotor_R75;
 import frc.robot.commands.decreaseMotorSpeed;
 import frc.robot.commands.increaseMotorSpeed;
 import frc.robot.commands.spinHalfPipe;
+import frc.robot.commands.stopHalfPipe;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -32,7 +33,9 @@ public class OI {
   Joystick JS_2 = new Joystick(RobotMap.JOYSTICK_1);
 
   public OI() {
-    new JoystickButton(JS_1, RobotMap.BTN_SPEED_1).whileHeld(new spinHalfPipe());
+    new JoystickButton(JS_1, RobotMap.JOYSTICK_1).whenActive(new spinHalfPipe());
+    new JoystickButton(JS_1, RobotMap.JOYSTICK_1).whenInactive(new stopHalfPipe());
+
 
     // new JoystickButton(JS_1, RobotMap.BTN_SPEED_2).whenPressed(new MaintainRPM());
     new JoystickButton(JS_1, RobotMap.BTN_SPEED_2).whenPressed(new SetMotor_0());
@@ -42,13 +45,13 @@ public class OI {
     new JoystickButton(JS_1, RobotMap.BTN_SPEED_8).whenPressed(new SetMotor_F75());
     new JoystickButton(JS_1, RobotMap.BTN_SPEED_9).whenPressed(new SetMotor_F100());
 
-    new JoystickButton(JS_1, RobotMap.BTN_SPEED_6).whenPressed(new SetMotor_R25());
+    new JoystickButton(JS_1, RobotMap.BTN_SPEED_6).whenPressed(new MaintainRPM());
     new JoystickButton(JS_1, RobotMap.BTN_SPEED_7).whenPressed(new SetMotor_R50());
     new JoystickButton(JS_1, RobotMap.BTN_SPEED_10).whenPressed(new SetMotor_R75());
     new JoystickButton(JS_1, RobotMap.BTN_SPEED_11).whenPressed(new SetMotor_R100());
     
   
-  }
+  } 
 
   /**
    * Gets the JS_1 joystick's position, as a percent of fully pushed

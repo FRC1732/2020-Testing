@@ -22,7 +22,11 @@ public class HalfPipe extends Subsystem {
   // here. Call these from Commands.
 
   public void spinHalfPiper(){
-    halfPipeMotor.set(ControlMode.PercentOutput, .75);
+    halfPipeMotor.set(ControlMode.PercentOutput,- .75);
+  }
+  
+  public void stopHalfPipe(){
+    halfPipeMotor.set(ControlMode.PercentOutput, 0);
   }
   @Override
   public void initDefaultCommand() {
