@@ -43,7 +43,11 @@ public class DriveMotor_1 extends Subsystem {
   }
 
   public void printMotorVelocity() {
-    System.out.println((Motor_1.getSelectedSensorVelocity()));
+    System.out.println("Velocity || "+Motor_1.getSelectedSensorVelocity());
+  }
+
+  public void printMotorCurrentDraw(){
+    System.out.println("Current Draw || "+Motor_1.getMotorOutputVoltage());
   }
 
   public double getMotorSpeed() {

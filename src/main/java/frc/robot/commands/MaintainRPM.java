@@ -28,6 +28,7 @@ public class MaintainRPM extends Command {
   @Override
   protected void execute() {
     Robot.m_DriveMotor.printMotorVelocity();
+    Robot.m_DriveMotor.printMotorCurrentDraw();
     //System.out.println(Robot.m_DriveMotor.getMotorVelocity());
     //System.out.println(Motor_1.getSelectedSensorVelocity()*600/8192.0+" rpm1");
   }
